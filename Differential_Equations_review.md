@@ -281,10 +281,66 @@ $$
 ## 波动型方程（20分）
 
 ### 一维
+
+$$ U_{tt} = a^2 \cdot U_{xx} \tag{1}
+$$
+
 #### 古典显格式
+
+$$ \frac{U^{k+1}_j - 2U^k_j +U^{k-1}_j}{\tau ^ 2} = a^2 \cdot \frac{U^k_{j+1} - 2U^k_{j} + U^k_{j-1}}{h_x^2} \tag{2}
+$$
+
+令：
+
+$$ r = \frac{a^2 \cdot \tau^2}{h^2_x}
+$$
+
+整理得：
+
+$$ U^{k+1}_j = 2U^k_j - U^{k-1}_j + r(U^k_{j+1} - 2U^k_j
++ U^k_{j-1}) \tag{3}
+$$
+
 #### 古典隐格式
+
+$$ \frac{U^{k+1}_j - 2U^k_j +U^{k-1}_j}{\tau ^ 2} = a^2 \cdot \frac{U^{k+1}_{j+1} - 2U^{k+1}_{j} + U^{k+1}_{j-1}}{h_x^2} \tag{2}
+$$
+
+令：
+
+$$ r = \frac{a^2 \cdot \tau^2}{h^2_x}
+$$
+
+整理得：
+
+$$ U^{k-1}_j = 2U^k_j + 2U^{k+1}_j - r(U^{k+1}_{j+1} -2U^{k+1}_j + U^{k+1}_{j-1}) \tag{3}
+$$
+
 #### 加权格式
+
+对（2）时间上加权平均：
+
+$$ θ \cdot U^{k+1}_{j} + (1-2θ) \cdot U^{k}_{j} + θ \cdot U^{k-1}_{j} = r \cdot (U^{k}_{j+1} - 2U^{k}_{j} + U^{k}_{j-1})
+$$
+
 #### 稳定性分析
 
 ### 二维
+
+$$ U_{tt} = a^2 \cdot (U_{xx}+U_{yy}) \tag{1}
+$$
+
 #### ADI格式
+
+令：
+
+$$ r = \frac{a^2 \cdot \tau}{h^2_x} , v = \frac{a^2 \cdot \tau}{h^2_y}
+$$
+将二维波动方程（式(1)）在 $x$ 方向和 $y$ 方向上分别进行半隐式离散化：
+
+$$ 2U_{tt}^{k+\frac{1}{2}} = r \cdot U_{xx}^{n+\frac{1}{2}} + v \cdot U_{yy}^{n} \tag{2} 
+$$
+
+$$ U_{tt}^{k+1} = r \cdot U_{xx}^{n+\frac{1}{2}} + v \cdot U_{yy}^{n+1} \tag{3} 
+$$
+
